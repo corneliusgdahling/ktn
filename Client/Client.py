@@ -27,8 +27,7 @@ class Client:
         
     def disconnect(self):
         # TODO: Handle disconnection
-        quitCommand = 'QUIT\r\n'
-        self.send(quitCommand)
+        self.disconnect(self)
 
     def login(self):
         # TODO: kode for inlogging
