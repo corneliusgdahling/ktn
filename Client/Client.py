@@ -28,6 +28,13 @@ class Client:
         quitCommand = 'QUIT\r\n'
         self.send(quitCommand)
 
+
+    def login(self):
+        # TODO: kode for inlogging
+
+    def logout(self):
+        # TODO: kode for utlogging
+
     def receive_message(self, message):
         # TODO: Handle incoming message
         pass
@@ -35,6 +42,7 @@ class Client:
     def send_payload(self, data):
         # TODO: Handle sending of a payload
         pass
+
         
     # More methods may be needed!
 
