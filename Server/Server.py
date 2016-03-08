@@ -27,8 +27,7 @@ class ClientHandler(SocketServer.BaseRequestHandler):
             received_string = self.connection.recv(4096)
             
             # TODO: Add handling of received payload from client
-            print self.received_string
-            self.request.sendall(self.received_string)
+            self.request.sendall(received_string)
 
 
 class ThreadedTCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
