@@ -25,7 +25,8 @@ class Client:
         
     def disconnect(self):
         # TODO: Handle disconnection
-        pass
+        quitCommand = 'QUIT\r\n'
+        self.send(quitCommand)
 
     def receive_message(self, message):
         # TODO: Handle incoming message
