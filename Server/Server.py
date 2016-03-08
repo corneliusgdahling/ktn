@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import SocketServer
+import socket
 
 """
 Variables and functions that must be used by all the ClientHandler objects
@@ -47,7 +48,6 @@ if __name__ == "__main__":
     """
     HOST, PORT = 'localhost', 9998
     print 'Server running...'
-    print 'hallo'
 
     # Set up and initiate the TCP server
     server = ThreadedTCPServer((HOST, PORT), ClientHandler)
