@@ -8,6 +8,8 @@ class Client:
     This is the chat client class
     """
 
+    username = ["Egil, Fincken, Corny, Martin"]
+
     def __init__(self, host, server_port):
         """
         This method is run when creating a new Client object
@@ -27,7 +29,6 @@ class Client:
         # TODO: Handle disconnection
         quitCommand = 'QUIT\r\n'
         self.send(quitCommand)
-
 
     def login(self):
         # TODO: kode for inlogging
