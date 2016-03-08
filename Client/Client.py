@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import socket
+import sys
 from MessageReceiver import MessageReceiver
 from MessageParser import MessageParser
 
@@ -7,8 +8,7 @@ class Client:
     """
     This is the chat client class
     """
-
-    username = ["Egil, Fincken, Corny, Martin"]
+    data = " ".join(sys.argv[1:])
 
     def __init__(self, host, server_port):
         """
@@ -21,12 +21,19 @@ class Client:
         # TODO: Finish init process with necessary code
         self.host = host
         self.server_port = server_port
-        self.run()
+        try:
+            self.run()
+        finally:
+            self.connection.close()
 
     def run(self):
         # Initiate the connection to the server
         self.connection.connect((self.host, self.server_port))
         print 'Connected'
+        self.connection.sendall(self.data + "\n")
+        received = self.connection.recv(1024)
+        print "Sent:     {}".format(self.data)
+        print "Received: {}".format(received)
         
     def disconnect(self):
         # TODO: Handle disconnection
