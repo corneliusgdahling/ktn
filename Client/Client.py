@@ -77,6 +77,7 @@ class Client(object):
     
     def disconnect(self):
         self.send(self.parse({'request':'logout'}))
+        print "You left the chat"
         
     def parse(self, data):
         return json.dumps(data)
