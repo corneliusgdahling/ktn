@@ -78,11 +78,15 @@ class ClientHandler(SocketServer.BaseRequestHandler):
         if decoded['request'] == 'logout':
           self.logout()
 
+        if decoded['request'] == 'names':
+            self.send({'response':'names'})
+
         if decoded['request'] == 'message':
             if decoded.get("message", "") != "":
                 padd=" "*(len(max(users, key=len))-len(self.username))
                 message = self.timestamp()+padd+" %s| %s"%(self.username, decoded['message'])
                 self.broadcast(message)
+
 
 
     def login(self, username):

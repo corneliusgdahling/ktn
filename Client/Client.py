@@ -39,6 +39,9 @@ class Client(object):
         if decoded.get("response", "") == "message":
             print decoded["message"].encode('utf-8')
 
+        if decoded.get("response", "") == "names":
+            print decoded["names"].encode('utf-8')
+
 
     def start(self, host, port):
         print "Started client!\nSpecify server ip:port, or use defaults "+host+":"+str(port)
@@ -49,7 +52,7 @@ class Client(object):
             
         self.connection.connect((host, port))
         self.logged_in = False  
-        self.commands = {"/logout":self.disconnect}
+        self.commands = {"/logout":self.disconnect,"/names":self.displayNames}
         
         while not self.logged_in:
             self.username = raw_input('Username: ')
@@ -78,7 +81,10 @@ class Client(object):
     def disconnect(self):
         self.send(self.parse({'request':'logout'}))
         print "You left the chat"
-        
+
+    def displayNames(self):
+        self.send(self.parse({'request':'names'}))
+
     def parse(self, data):
         return json.dumps(data)
     
