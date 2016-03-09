@@ -52,7 +52,8 @@ class Client(object):
             
         self.connection.connect((host, port))
         self.logged_in = False  
-        self.commands = {"/logout":self.disconnect,"/names":self.displayNames}
+        self.commands = {"/logout":self.disconnect,"/names":self.displayNames, "/help":self.help}
+
         
         while not self.logged_in:
             self.username = raw_input('Username: ')
@@ -84,6 +85,9 @@ class Client(object):
 
     def displayNames(self):
         self.send(self.parse({'request':'names'}))
+
+    def help(self):
+        print "snakkes, nerd"
 
     def parse(self, data):
         return json.dumps(data)
