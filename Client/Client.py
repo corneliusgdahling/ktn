@@ -40,7 +40,7 @@ class Client(object):
             print decoded["message"].encode('utf-8')
 
         if decoded.get("response", "") == "names":
-            print decoded["names"].encode('utf-8')
+            print decoded["users"].encode('utf-8')
 
 
     def start(self, host, port):

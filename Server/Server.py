@@ -79,7 +79,8 @@ class ClientHandler(SocketServer.BaseRequestHandler):
           self.logout()
 
         if decoded['request'] == 'names':
-            self.send({'response':'names'})
+            for i in range(0,len(users)):
+                self.send({'response':'names','users':users[i]})
 
         if decoded['request'] == 'message':
             if decoded.get("message", "") != "":
