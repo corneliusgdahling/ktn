@@ -120,11 +120,25 @@ class ClientHandler(SocketServer.BaseRequestHandler):
             time.sleep(0.2) #0.2 seconds
 
 
+class ThreadedTCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+    """
+    This class is present so that each client connected will be ran as a own
+    thread. In that way, all clients will be served by the server.
+
+    No alterations are necessary
+    """
+    allow_reuse_address = True
+
 if __name__ == "__main__":
-    HOST = '0.0.0.0'
-    PORT = 9999
+    """
+    This is the main method and is executed when you type "python Server.py"
+    in your terminal.
 
-    server = SocketServer.TCPServer((HOST, PORT), ClientHandler)
+    No alterations are necessary
+    """
+    HOST, PORT = '', 9999
+    print 'Server running...'
 
-
+    # Set up and initiate the TCP server
+    server = ThreadedTCPServer((HOST, PORT), ClientHandler)
     server.serve_forever()
